@@ -1,0 +1,11 @@
+.contenedor{
+  width: 70vw;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.wrapper-ls{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}

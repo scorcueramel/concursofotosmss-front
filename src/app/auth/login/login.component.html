@@ -1,0 +1,72 @@
+<div class="grid">
+  <div class="col-12 flex align-items-center justify-content-center">
+    <div
+      class="shadow-8 text-center border-round-sm h-30rem w-30rem font-semibold border-round-sm bg-white-alpha-80"
+    >
+      <img src="../../../assets/img/login-top.png" alt="Login" width="250" />
+      <p-toast></p-toast>
+      <h3>Iniciar Sesion</h3>
+      <form (ngSubmit)="onSubmit()" #formLogin="ngForm">
+        <div class="col-12 inputs">
+          <span class="p-input-icon-right">
+            <i class="pi pi-user"></i>
+            <input
+              type="text"
+              pInputText
+              placeholder="Nombre de usuario"
+              id="username"
+              name="username"
+              [(ngModel)]="usuario.username"
+              required
+              #username="ngModel"
+              maxlength="25"
+            />
+          </span>
+        </div>
+        <span
+          class="errormessage"
+          *ngIf="username.invalid && (username.dirty || username.touched)"
+        >
+          <div *ngIf="username.errors?.['required']">
+            El nombre de usuario es requerido.
+          </div>
+        </span>
+        <div class="col-12 inputs">
+          <span class="p-input-icon-left">
+            <i class="pi pi-lock"></i>
+            <p-password
+            [(ngModel)]="usuario.password"
+            [toggleMask]="true"
+            [feedback]="false"
+            #password="ngModel"
+            minlength="6"
+            id="password"
+            name="password"
+            placeholder="Contraseña"
+            required
+            ></p-password>
+          </span>
+        </div>
+        <span
+          class="errormessage"
+          *ngIf="password.invalid && (password.dirty || password.touched)"
+        >
+          <div *ngIf="password.errors?.['required']">
+            la contraseña es requerido.
+          </div>
+          <div *ngIf="password.errors?.['minlength']">
+            la contraseña debe tener 6 caractener como minimo.
+          </div>
+        </span>
+        <div>
+          <p-button
+            type="submit"
+            label="Inicia Sesion"
+            styleClass="p-button-sm mt-4"
+            [disabled]="!formLogin.valid"
+          ></p-button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

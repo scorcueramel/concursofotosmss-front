@@ -1,0 +1,34 @@
+<div class="surface-section px-4 py-5 md:px-6 lg:px-8 principal">
+  <ul class="list-none p-0 m-0 flex align-items-center font-medium mb-3">
+      <li>
+          <a class="text-500 no-underline line-height-3 cursor-pointer" routerLink="/menu/inicio/portada">Inicio</a>
+      </li>
+      <li class="px-2">
+          <i class="pi pi-angle-right text-500 line-height-3"></i>
+      </li>
+      <li>
+          <span class="text-900 line-height-3">Página no encontrada</span>
+      </li>
+  </ul>
+  <div class="flex align-items-start flex-column lg:justify-content-between lg:flex-row">
+      <div class="col-4">
+        <h1 style="font-size: 200px; margin-bottom: 20px ;margin-top: 40px;">404</h1>
+        <div class="font-medium text-3xl text-900 mb-5">Página no encontrada</div>
+        <p>Lo sentimos, la página que estas buscando no existe o fue dada de baja.</p>
+        <p>Por favor, en el enlace de abajo para volver al inicio</p>
+          <div class="flex align-items-center text-700 flex-wrap">
+              <div class="mr-5 flex align-items-center ">
+                <span>
+                  <a routerLink="/menu/inicio/portada" class="text-xl text-primary-500" style="text-decoration: none;">
+                      <i class="pi pi-arrow-circle-left mr-2"></i>
+                      Volver al inicio
+                    </a>
+                  </span>
+              </div>
+          </div>
+      </div>
+      <div class="col-8 overflow-hidden">
+        <div class="bg-contain bg-center bg-no-repeat border-round h-30rem w-full" style="background-image: url('./../../assets/img/not-found.png');"></div>
+      </div>
+  </div>
+</div>

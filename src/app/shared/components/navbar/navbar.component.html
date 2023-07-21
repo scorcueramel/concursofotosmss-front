@@ -1,0 +1,13 @@
+<div class="card">
+  <p-menubar [model]="items">
+      <ng-template pTemplate="start">
+        <a routerLink="/menu/inicio/portada">
+          <img src="../../../../assets/img/UVA.png" height="40" class="mr-2" />
+        </a>
+      </ng-template>
+      <ng-template pTemplate="end">
+        <p-button icon="pi pi-fw pi-power-off" pTooltip="Cerrar sesión" tooltipPosition="left" styleClass="p-button-rounded p-button-secondary p-button-text p-button-raised"
+        (click)="logOut()"></p-button>
+      </ng-template>
+  </p-menubar>
+</div>

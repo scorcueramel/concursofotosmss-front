@@ -1,0 +1,95 @@
+<div class="wrapper-ls">
+  <div class="card contenedor bg-white">
+    <p-toolbar styleClass="mb-4 gap-2">
+      <ng-template pTemplate="left">
+        <h3 class="text-green-500">USUARIOS REGISTRADOS</h3>
+      </ng-template>
+      <ng-template pTemplate="right">
+        <button
+          pButton
+          pRipple
+          label="Nuevo usuario"
+          icon="pi pi-plus"
+          class="p-button-success p-button-sm mr-2"
+          (click)="nuevoUsuario()"
+        ></button>
+      </ng-template>
+    </p-toolbar>
+    <p-table
+      #dt
+      [value]="usuarios"
+      [tableStyle]="{ 'min-width': '50rem' }"
+      [rows]="5"
+      [paginator]="true"
+      [globalFilterFields]="['id', 'rol', 'name', 'username']"
+      [tableStyle]="{ 'min-width': '75rem' }"
+      [rowHover]="true"
+      dataKey="id"
+      currentPageReportTemplate="Mostrando {first} al {last} de {totalRecords} Totales"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[5, 10, 15, 20]"
+      class="tabla"
+    >
+      <ng-template pTemplate="caption">
+        <div class="flex align-items-center justify-content-between">
+          <h5 class="m-0"></h5>
+          <span class="p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input
+              pInputText
+              type="text"
+              (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+              placeholder="Buscador..."
+            />
+          </span>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="id">id <p-sortIcon field="id"></p-sortIcon></th>
+          <th pSortableColumn="rol">
+            Rol <p-sortIcon field="rol"></p-sortIcon>
+          </th>
+          <th pSortableColumn="name">
+            Name <p-sortIcon field="name"></p-sortIcon>
+          </th>
+          <th pSortableColumn="username">
+            Username <p-sortIcon field="username"></p-sortIcon>
+          </th>
+          <th>Acciones</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-user>
+        <tr>
+          <td>{{ user.id }}</td>
+          <td>{{ user.rol }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.username }}</td>
+          <td>
+            <button
+              pButton
+              pRipple
+              icon="pi pi-pencil"
+              class="p-button-rounded p-button-info mr-2"
+              (click)="editarUsuario(user.id)"
+            ></button>
+            <p-button
+              (click)="eliminarUsuario('top-right', user)"
+              icon="pi pi-trash"
+              styleClass="p-button-rounded p-button-danger mr-2"
+            ></p-button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+
+<p-toast></p-toast>
+<!-- <p-confirmPopup></p-confirmPopup> -->
+<p-confirmDialog
+  [style]="{ width: '50vw' }"
+  key="positionDialog"
+  [position]="position"
+  rejectButtonStyleClass="p-button-outlined"
+></p-confirmDialog>

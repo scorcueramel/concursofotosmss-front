@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+
+body {
+  font-family: var(--font-family);
+}
+
+html,body{
+  height: 99vh;
+}
+
+.wrapper {
+  /* height: 100vh; */
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    148deg,
+    rgba(2, 0, 36, 1) 10%,
+    rgba(1, 97, 165, 1) 38%,
+    rgba(29, 211, 176, 1) 93%
+  );
+}
