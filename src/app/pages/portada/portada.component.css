@@ -1,3 +1,9 @@
-h1{
-  color: #fff;
+.imagen{
+  width: 100vw;
+}
+
+.wrapper-portada{
+  display: flex;
+  justify-content: center;
+  height: 80vh;
 }

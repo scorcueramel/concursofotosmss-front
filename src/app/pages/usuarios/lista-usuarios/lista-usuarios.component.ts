@@ -26,12 +26,13 @@ export class ListaUsuariosComponent implements OnInit {
     private userService: UsersService,
     private router: Router,
     private messageService: MessageService,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
   ) {}
 
   ngOnInit(): void {
     this.obtenerUsuarios();
   }
+
 
   obtenerUsuarios(): void {
     let headers = new Headers();

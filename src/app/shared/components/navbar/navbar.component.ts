@@ -19,47 +19,20 @@ export class NavbarComponent implements OnInit {
   validForAll():void{
     this.items = [
       {
-        label: 'Fotos',
-        icon: 'pi pi-fw pi-image',
-        items: [
-          {
-            label: 'Nuevo',
-            icon: 'pi pi-fw pi-plus',
-          },
-          {
-            label: 'Fotos (todos)',
-            icon: 'pi pi-fw pi-images',
-          },
-        ],
-      },
-      {
         label: 'Album',
         icon: 'pi pi-folder',
         items: [
           {
-            label: 'Nuevo',
-            icon: 'pi pi-fw pi-plus',
-          },
-          {
-            label: 'Albunes (todos)',
+            label: 'Publicos',
             icon: 'pi pi-folder-open',
-          },
-        ],
-      },
-      {
-        label: 'Concepto',
-        icon: 'pi pi-fw pi-tag',
-        items: [
-          {
-            label: 'Nuevo',
-            icon: 'pi pi-fw pi-plus',
+            routerLink: '/menu/inicio/albunes/todos'
           },
           {
-            label: 'Conceptos (todos)',
-            icon: 'pi pi-fw pi-tags',
+            label: 'Ocultos',
+            icon: 'pi pi-minus-circle'
           },
         ],
-      },
+      }
     ];
   }
 
@@ -72,12 +45,12 @@ export class NavbarComponent implements OnInit {
           {
             label: 'Nuevo',
             icon: 'pi pi-fw pi-user-plus',
-            routerLink: 'usuarios/crear'
+            routerLink: '/menu/inicio/usuarios/crear'
           },
           {
             label: 'Usuarios (todos)',
             icon: 'pi pi-fw pi-users',
-            routerLink: 'usuarios/todos'
+            routerLink: '/menu/inicio/usuarios/todos'
           },
         ],
       });

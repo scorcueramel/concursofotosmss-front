@@ -1,1 +1,83 @@
-<h1 style="color: white;">editar-usuario works!</h1>
+<div class="wrapper-nu">
+  <p-toast></p-toast>
+  <div class="surface-card p-4 shadow-2 border-round w-full lg:w-4">
+    <div class="text-center mb-5">
+      <img
+        src="../../../../assets/img/user_profile.png"
+        alt="Image"
+        height="150"
+      />
+      <div class="text-900 text-3xl font-medium mb-3">Editar Usuario</div>
+      <p-button
+        label="Ver usuarios"
+        icon="pi pi-arrow-circle-left"
+        styleClass="p-button-rounded p-button-danger p-button-text p-button-raised"
+        (onClick)="volver()"
+      ></p-button>
+    </div>
+    <form (ngSubmit)="onEdit()" #editForm="ngForm">
+      <div>
+        <label for="name1" class="block text-900 font-medium mb-2"
+          >Nombres y Apellidos</label
+        >
+        <input
+          id="name1"
+          type="text"
+          placeholder="Ingrea el nombre completo del usuario"
+          pInputText
+          class="w-full mb-3 focused"
+          [(ngModel)]="usuarioEditar.name"
+          name="name"
+          #name="ngModel"
+          required
+        />
+        <div [hidden]="name.valid || name.pristine" class="text-red-500 mb-3">
+          NOMBRES Y APELLIDOS requeridos
+        </div>
+
+        <label for="username" class="block text-900 font-medium mb-2"
+          >Nombre de usuario (username)</label
+        >
+        <input
+          id="username"
+          type="text"
+          placeholder="Ejemplo: jperez"
+          pInputText
+          class="w-full mb-3"
+          [(ngModel)]="usuarioEditar.username"
+          name="username"
+          maxlength="100"
+          #username="ngModel"
+          required
+        />
+
+        <div [hidden]="username.valid || username.pristine" class="text-red-500 mb-3">
+          USERNAME Requerido
+        </div>
+
+        <label for="password1" class="block text-900 font-medium mb-2"
+          >Contraseña</label
+        >
+        <input
+          id="password1"
+          type="password"
+          placeholder="**********"
+          pInputText
+          class="w-full mb-3"
+          [(ngModel)]="usuarioEditar.password"
+          name="password"
+          maxlength="25"
+          minlength="6"
+          required
+        />
+
+        <p-button
+          icon="pi pi-user"
+          label="Actualizar Usuario"
+          styleClass="p-button-raised p-button-text w-full"
+          type="submit"
+        ></p-button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="wrapper-contenedor">
+  <h1>Agregar Albúm</h1>
+  <div class="formulario">
+    <form (ngSubmit)="guardarAlbum()" #formulario="ngForm">
+      <div class="controles">
+        <label>portada</label>
+        <input type="file" [(ngModel)]="portada" (change)="cargarImagen($event)">
+      </div>
+      <div class="controles">
+        <label>nombre</label>
+        <input type="text" name="nombre" id="nombre" [(ngModel)]="nombre">
+      </div>
+      <div class="controles">
+        <button type="submit">
+          GUARDAR
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

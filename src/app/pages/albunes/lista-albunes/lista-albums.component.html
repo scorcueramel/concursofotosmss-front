@@ -1,0 +1,79 @@
+<div class="grid">
+  <div class="col">
+    <div class="text-center p-3 mx-3 border-round-sm bg-white font-bold">
+      <p-toolbar styleClass="mb-4 gap-2">
+        <ng-template pTemplate="left">
+          <h3 class="text-green-500">ALBUNES REGISTRADOS</h3>
+        </ng-template>
+        <ng-template pTemplate="right">
+          <button
+            pButton
+            pRipple
+            label="NUEVO ALBÚM"
+            icon="pi pi-plus"
+            class="p-button-success p-button-sm mr-2 mb-3"
+            (click)="nuevoAlbum()"
+          ></button>
+        </ng-template>
+      </p-toolbar>
+      <div class="grid wrapper-contenedor">
+        <div class="col-auto" *ngFor="let album of albunes">
+          <div class="card flex justify-content-center pt-4 px-2">
+            <p-card
+              [style]="{ width: '380px', heigth:'600px' }"
+              *ngIf="album.publicado == true && album.activo == true"
+            >
+              <ng-template
+                pTemplate="header"
+                *ngIf="
+                  album.portada == null
+                  else imgPortada
+                "
+              >
+                <img
+                  alt="Portada"
+                  src="./../../../../assets/img/default.png"
+                  [style]="{ width: '120px' }"
+                />
+              </ng-template>
+
+              <ng-template #imgPortada>
+                <img
+                  alt="Portada"
+                  [src]="rutaURL + album.portada"
+                  [alt]="album.portada"
+                  class="block m-auto pb-3"
+                  [style]="{ width: '240px' }"
+                  *ngIf="album.portada"
+                />
+              </ng-template>
+
+              <h4>{{ album.nombre }}</h4>
+
+              <ng-template pTemplate="footer">
+                <p-button
+                  icon="pi pi-eye"
+                  styleClass="p-button-success"
+                ></p-button>
+                <p-button
+                  icon="pi pi-pencil"
+                  styleClass="p-button-primary"
+                  [style]="{ 'margin-left': '.5em' }"
+                ></p-button>
+                <p-button
+                  icon="pi pi-trash"
+                  styleClass="p-button-danger"
+                  [style]="{ 'margin-left': '.5em' }"
+                  (onClick)="deleteProduct(album)"
+                ></p-button>
+              </ng-template>
+            </p-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<p-confirmDialog [style]="{ width: '450px' }">
+</p-confirmDialog>
+<p-toast></p-toast>

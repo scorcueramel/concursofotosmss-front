@@ -84,8 +84,4 @@ export class NuevoUsuarioComponent implements OnInit {
     });
   }
 
-  limpiarCajas():void{
-
-  }
-
 }

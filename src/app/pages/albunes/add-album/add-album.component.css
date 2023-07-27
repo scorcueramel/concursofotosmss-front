@@ -1,0 +1,12 @@
+.wrapper-contenedor
+{
+  background-color: #fff;
+}
+h1{
+  text-align: center;
+}
+.controles{
+  padding: 20px;
+  display: block;
+  text-align: center;
+}

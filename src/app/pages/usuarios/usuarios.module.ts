@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastModule } from 'primeng/toast';
 import { TableModule } from 'primeng/table';
 import { ToolbarModule } from 'primeng/toolbar';
@@ -10,7 +10,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 
 
-import { NuevoUsuarioComponent } from './nuevos-usuario/nuevo-usuario.component';
+import { NuevoUsuarioComponent } from './nuevo-usuario/nuevo-usuario.component';
 import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.component';
 import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
 
@@ -30,7 +30,8 @@ import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.componen
     TableModule,
     ToolbarModule,
     ConfirmDialogModule,
-    ConfirmPopupModule
+    ConfirmPopupModule,
+    FormsModule
   ],
   exports:[
     NuevoUsuarioComponent,

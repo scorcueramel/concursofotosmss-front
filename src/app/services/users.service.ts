@@ -22,6 +22,14 @@ export class UsersService {
     return this.httpClient.get<User[]>(`${this.URL}${this.URI}getAllUsers`,cabecera);
   }
 
+  getOneUnser(cabecera:Object, id:any):Observable<User>{
+    return this.httpClient.get<User>(`${this.URL}${this.URI}getOne/${id}`,cabecera);
+  }
+
+  updatedUser(cabecera:Object, id:number, user:User):Observable<User>{
+    return this.httpClient.post<User>(`${this.URL}${this.URI}updateUser/${id}`,user,cabecera);
+  }
+
   dropUser(cabecera:Object, id:any):Observable<Object>{
     return this.httpClient.post<Object>(`${this.URL}${this.URI}dropUser/${id}`,null,cabecera);
   }

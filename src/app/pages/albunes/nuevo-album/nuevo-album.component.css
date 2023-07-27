@@ -1,0 +1,13 @@
+.wrapper-nu{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.file{
+  padding: 15px;
+  background-color: transparent;
+  border-radius: 6px;
+  border: 1px solid rgba(128, 128, 128, 0.411);
+  overflow: hidden;
+}

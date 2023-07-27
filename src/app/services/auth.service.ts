@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { User } from '../interfaces/user';
 import { Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,8 @@ export class AuthService {
 
   constructor(
     private httpClient: HttpClient,
-    private _jwtHelper: JwtHelperService
+    private _jwtHelper: JwtHelperService,
+    private router : Router
   ) {
     this.URL = environment.apiUrl;
     this.URI = 'auth/';
