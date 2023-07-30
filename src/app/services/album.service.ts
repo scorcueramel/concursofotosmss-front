@@ -21,10 +21,8 @@ export class AlbumService {
     return this.httpCliet.get<Album[]>(`${this.URL}${this.URI}getAllAlbums`,cabecera);
   }
 
-  processFile(cabecera:Object,portada:any):Observable<any>{
-    const fd = new FormData();
-    fd.append('portada',portada,portada.name)
-    return this.httpCliet.post<any>(`${this.URL}${this.URI}procFile`,fd,cabecera);
+  storeImage(cabecera:Object, formData:FormData):Observable<any>{
+    return this.httpCliet.post<any>(`${this.URL}${this.URI}procFile`,formData,cabecera);
   }
 
   registerAlbum(cabecera:Object, album:Album):Observable<Album>{

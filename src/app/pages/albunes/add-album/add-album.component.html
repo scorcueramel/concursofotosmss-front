@@ -1,20 +1,30 @@
 <div class="wrapper-contenedor">
-  <h1>Agregar Albúm</h1>
-  <div class="formulario">
-    <form (ngSubmit)="guardarAlbum()" #formulario="ngForm">
-      <div class="controles">
-        <label>portada</label>
-        <input type="file" [(ngModel)]="portada" (change)="cargarImagen($event)">
-      </div>
-      <div class="controles">
-        <label>nombre</label>
-        <input type="text" name="nombre" id="nombre" [(ngModel)]="nombre">
-      </div>
-      <div class="controles">
-        <button type="submit">
-          GUARDAR
-        </button>
-      </div>
-    </form>
+  <h1>Registro de Albúm</h1>
+  <img [src]="previsualizar[0]" alt="Imagen" *ngIf="previsualizar[0]?previsualizar[0]:null" width="300">
+  <button (click)="eliminarFoto()">
+    Quitar imagen
+  </button>
+  <br>
+  <br>
+  <form>
+    <div>
+      <label>Nombre</label>
+      <input type="text"  name="nombre" [(ngModel)]="album.nombre">
+      <br>
+      <br>
+      <label >Portada</label>
+      <input type="file" (change)="processFiles($event)">
+      <input type="hidden" [(ngModel)]="album.portada" name="portada">
+      <br>
+      <br>
+    <label>Publicado</label>
+    <input type="radio" name="publicado" id="publicado" value="1" [(ngModel)]="album.publicado">SI
+    <input type="radio" name="publicado" id="publicado" value="0" [(ngModel)]="album.publicado">NO
+    <br>
+    <br>
+    <button (click)="guardar()">
+      Enviar
+    </button>
   </div>
+  </form>
 </div>
