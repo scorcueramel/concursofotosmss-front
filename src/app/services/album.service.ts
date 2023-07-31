@@ -17,8 +17,24 @@ export class AlbumService {
     this.URI = 'albums/';
   }
 
-  getAllAlbums(cabecera:Object):Observable<Album[]>{
-    return this.httpCliet.get<Album[]>(`${this.URL}${this.URI}getAllAlbums`,cabecera);
+  getAactivesAlbums(cabecera:Object):Observable<Album[]>{
+    return this.httpCliet.get<Album[]>(`${this.URL}${this.URI}getAllAlbumsActives`,cabecera);
+  }
+
+  getInactivesAlbums(cabecera:Object):Observable<Album[]>{
+    return this.httpCliet.get<Album[]>(`${this.URL}${this.URI}getAllAlbumsInactives`,cabecera);
+  }
+
+  getOneAlbum(cabecera:Object, id:any):Observable<Album>{
+    return this.httpCliet.get<Album>(`${this.URL}${this.URI}getOne/${id}`,cabecera);
+  }
+
+  publicateAlbum(cabecera:Object,id:any):Observable<Album>{
+    return this.httpCliet.get<Album>(`${this.URL}${this.URI}publicate/${id}`,cabecera);
+  }
+
+  dePublicateAlbum(cabecera:Object,id:any):Observable<Album>{
+    return this.httpCliet.get<Album>(`${this.URL}${this.URI}depublicate/${id}`,cabecera);
   }
 
   storeImage(cabecera:Object, formData:FormData):Observable<any>{
@@ -27,6 +43,10 @@ export class AlbumService {
 
   registerAlbum(cabecera:Object, album:Album):Observable<Album>{
     return this.httpCliet.post<Album>(`${this.URL}${this.URI}create`,album,cabecera);
+  }
+
+  updateAlbum(cabecera:Object, album:Album,id:any):Observable<Album>{
+    return this.httpCliet.post<Album>(`${this.URL}${this.URI}updateAlbum/${id}`,album,cabecera);
   }
 
   deleteAlbum(cabecera:Object, id:any):Observable<Object>{

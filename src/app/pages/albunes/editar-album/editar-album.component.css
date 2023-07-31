@@ -1,0 +1,19 @@
+.wrapper-nu{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+#portada{
+  padding: 14px;
+  border-radius: 5px;
+  border: 1px solid rgba(128, 128, 128, 0.401);
+  cursor: pointer;
+}
+
+#portada:hover{
+  border: 1px solid #3B82F6;
+}
+
+#portada:focus{
+  box-shadow: rgba(191, 219, 254, 0.8) 0px 0px 0px 3px;
+}

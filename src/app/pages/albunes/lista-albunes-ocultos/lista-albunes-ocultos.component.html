@@ -7,17 +7,16 @@
             [value]="albunes"
             [numVisible]="3"
             [numScroll]="3"
-            [circular]="false"
             [responsiveOptions]="responsiveOptions"
           >
             <ng-template pTemplate="header">
-              <h3>ALBUMS CON ESTADO DE PÚBLICO</h3>
+              <h3>ALBUMS CON ESTADO DE OCULTO (No público)</h3>
             </ng-template>
             <ng-template let-album pTemplate="item">
               <div
                 class="border-1 surface-border border-round m-2 text-center py-5 px-3"
               >
-                <div class="mb-3">
+              <div class="mb-3">
                   <img
                     [src]="
                       album.portada
@@ -34,26 +33,12 @@
                   <h4 class="mb-1">{{ album.nombre }}</h4>
                   <div class="car-buttons mt-5">
                     <p-button
-                    type="button"
-                    styleClass="p-button-warning p-button-rounded mr-2"
-                    icon="pi pi-times"
-                    pTooltip="Publicar Album?"
-                    tooltipPosition="bottom"
-                    (onClick)="ocultar(album.id, album.nombre)"
-                  ></p-button>
-                    <p-button
                       type="button"
-                      styleClass="p-button p-button-rounded mr-2"
-                      icon="pi pi-search"
-                      pTooltip="Agregar fotos a este albúm?"
+                      styleClass="p-button-warning p-button-rounded mr-2"
+                      icon="pi pi-check"
+                      pTooltip="Publicar Album?"
                       tooltipPosition="bottom"
-                      (onClick)="agregarFoto(album.id,album.nombre)"
-                    ></p-button>
-                    <p-button
-                      type="button"
-                      styleClass="p-button-success p-button-rounded mr-2"
-                      icon="pi pi-pencil"
-                      (onClick)="editarAlbum(album.id)"
+                      (onClick)="publicar(album.id, album.nombre)"
                     ></p-button>
                     <p-button
                       type="button"

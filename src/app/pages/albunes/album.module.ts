@@ -13,11 +13,15 @@ import { ToastModule } from 'primeng/toast';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { FileUploadModule } from 'primeng/fileupload';
 import { FormsModule } from '@angular/forms';
-import { AddAlbumComponent } from './add-album/add-album.component';
+import { CarouselModule } from 'primeng/carousel';
+import { ListaAlbunesOcultosComponent } from './lista-albunes-ocultos/lista-albunes-ocultos.component';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { TooltipModule } from 'primeng/tooltip';
+import { EditarAlbumComponent } from './editar-album/editar-album.component';
 
 
 @NgModule({
-  declarations: [ListaAlbumsComponent, NuevoAlbumComponent, AddAlbumComponent],
+  declarations: [ListaAlbumsComponent, NuevoAlbumComponent, ListaAlbunesOcultosComponent, EditarAlbumComponent],
   imports: [
     CommonModule,
     CardModule,
@@ -29,7 +33,10 @@ import { AddAlbumComponent } from './add-album/add-album.component';
     ButtonModule,
     RadioButtonModule,
     FormsModule,
-    FileUploadModule
+    FileUploadModule,
+    CarouselModule,
+    InputSwitchModule,
+    TooltipModule
   ],
   exports: [ListaAlbumsComponent, NuevoAlbumComponent],
 })

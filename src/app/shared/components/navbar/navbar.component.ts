@@ -23,13 +23,19 @@ export class NavbarComponent implements OnInit {
         icon: 'pi pi-folder',
         items: [
           {
+            label: 'Nuevo',
+            icon: 'pi pi-plus-circle',
+            routerLink: '/menu/inicio/albunes/nuevo'
+          },
+          {
             label: 'Publicos',
             icon: 'pi pi-folder-open',
-            routerLink: '/menu/inicio/albunes/todos'
+            routerLink: '/menu/inicio/albunes/publicados'
           },
           {
             label: 'Ocultos',
-            icon: 'pi pi-minus-circle'
+            icon: 'pi pi-minus-circle',
+            routerLink: '/menu/inicio/albunes/ocultos'
           },
         ],
       }

@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthRoutingModule } from './auth/auth-routing.module';
-import { PagesModule } from './pages/pages.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthModule } from './auth/auth.module';
 
@@ -20,7 +19,6 @@ import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
     BrowserAnimationsModule,
     AuthRoutingModule,
     AuthModule,
-    PagesModule,
     HttpClientModule
   ],
   providers: [

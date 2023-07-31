@@ -2,16 +2,16 @@
   <p-toast></p-toast>
   <div class="surface-card p-4 shadow-2 border-round w-full lg:w-4">
     <div class="text-center mb-5">
-      <div class="text-900 text-3xl font-medium my-3">NUEVO ALBÚM</div>
+      <div class="text-900 text-3xl font-medium my-3">ACTUALIZAR ALBÚM</div>
       <p-button label="Volver a Albunes" icon="pi pi-arrow-circle-left"
         styleClass="p-button-rounded p-button-danger p-button-text p-button-raised" (onClick)="volver()"></p-button>
     </div>
     <div class="text-center mb-5">
-      <img [src]="previsualizar[0]" alt="Imagen" *ngIf="previsualizar[0]?previsualizar[0]:null" width="200" alt="Image"
+      <img [src]="previsualizar[0]?previsualizar[0]:'./../../../../assets/img/default.png'" alt="Imagen" width="200" alt="Image"
         height="250" />
       <br>
       <p-button icon="pi pi-eraser" label="QUITAR IMAGEN" styleClass="p-button-raised p-button-text w-20rem mt-4 p-button-danger"
-        *ngIf="previsualizar[0]?previsualizar[0]:null" (onClick)=" eliminarFoto()">
+        *ngIf="previsualizar[0]?previsualizar[0]:previsualizar[0]" (onClick)=" eliminarFoto()">
       </p-button>
     </div>
 
@@ -36,7 +36,7 @@
           <label for="no" class="ml-2">NO</label>
 
         <p-button icon="pi pi-images" label="GUARDAR REGISTRO"
-          styleClass="p-button-raised p-button-text w-full mt-4" (onClick)="guardar()"></p-button>
+          styleClass="p-button-raised p-button-text w-full mt-4"  (onClick)="guardar(album.id)"></p-button>
       </div>
     </form>
   </div>

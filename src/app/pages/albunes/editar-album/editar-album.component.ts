@@ -1,34 +1,62 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { ActivatedRoute ,Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Album } from 'src/app/interfaces/album';
 import { AlbumService } from 'src/app/services/album.service';
 import { SwalService } from 'src/app/services/swal.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-nuevo-album',
-  templateUrl: './nuevo-album.component.html',
-  styleUrls: ['./nuevo-album.component.css'],
+  selector: 'app-editar-album',
+  templateUrl: './editar-album.component.html',
+  styleUrls: ['./editar-album.component.css'],
   providers: [MessageService],
 })
-export class NuevoAlbumComponent implements OnInit {
+export class EditarAlbumComponent {
+  id:number = this.activatedRouter.snapshot.params['id'];
+  rutaURL = environment.apiUrlArchivos;
+
   constructor(
     private router: Router,
     private albumService: AlbumService,
     private swalService: SwalService,
     private messageService: MessageService,
+    private activatedRouter: ActivatedRoute
     ) {}
 
-  ngOnInit(): void {  }
-
+  ngOnInit(): void {
+    this.obtenerAlbum(this.id);
+   }
   archivos = new Array();
-  imagen!: string;
   previsualizar = new Array();
   album: Album = {
+    id:0,
     nombre: '',
     portada: '',
     publicado: true,
   };
+  albumObtenido:Album[] = [];
+
+  obtenerAlbum(id:number):void{
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', `Bearer ${localStorage.getItem('token')}`);
+    this.swalService.wait();
+    this.albumService.getOneAlbum({headers:headers},id).subscribe({
+      next: (resp:any) => {
+        this.albumObtenido = resp.album;
+        this.albumObtenido.map((data)=>{
+          this.album = data;
+          this.previsualizar.push(this.rutaURL+this.album.portada);
+        });
+        this.swalService.close();
+      },
+      error: (err:any) => {
+        this.swalService.close();
+        console.log(err.error);
+      }
+    });
+  }
 
   processFiles(event: any): void {
     let headers = new Headers();
@@ -49,7 +77,6 @@ export class NuevoAlbumComponent implements OnInit {
       this.albumService.storeImage({ headers: headers }, formData).subscribe({
         next: (resp: any) => {
           this.album.portada = resp.archivo.filename;
-          console.log(resp);
           this.swalService.close();
         },
         error: (err: any) => {
@@ -60,13 +87,13 @@ export class NuevoAlbumComponent implements OnInit {
     }
   }
 
-  guardar() {
+  guardar(id:number) {
     let headers = new Headers();
     headers.append('content-type', 'application/json');
     headers.append('Authorization', `Bearer ${localStorage.getItem('token')}`);
     this.swalService.wait();
     this.albumService
-      .registerAlbum({ headers: headers }, this.album)
+      .updateAlbum({ headers: headers }, this.album, id)
       .subscribe({
         next: (resp: any) => {
           console.log(resp);
@@ -106,6 +133,7 @@ export class NuevoAlbumComponent implements OnInit {
 
   eliminarFoto() {
     this.previsualizar = [];
+    this.album.portada = '';
   }
 
   volver(): void {

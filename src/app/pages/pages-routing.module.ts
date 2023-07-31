@@ -13,7 +13,9 @@ import { ListaUsuariosComponent } from './usuarios/lista-usuarios/lista-usuarios
 import { EditarUsuarioComponent } from './usuarios/editar-usuario/editar-usuario.component';
 import { ListaAlbumsComponent } from './albunes/lista-albunes/lista-albums.component';
 import { NuevoAlbumComponent } from './albunes/nuevo-album/nuevo-album.component';
-import { AddAlbumComponent } from './albunes/add-album/add-album.component';
+import { ListaAlbunesOcultosComponent } from './albunes/lista-albunes-ocultos/lista-albunes-ocultos.component';
+import { EditarAlbumComponent } from './albunes/editar-album/editar-album.component';
+import { ListaFotosComponent } from './fotos/lista-fotos/lista-fotos.component';
 
 const routes: Routes = [
   {
@@ -45,38 +47,40 @@ const routes: Routes = [
                 component: EditarUsuarioComponent
               }
             ]
-          }
-        ],
-      }
-    ],
-  },
-  {
-    path:'',
-    component: PagesComponent,
-    children:[
-      {
-        path:'inicio',
-        children:[
+          },
           {
             path:'albunes',
             children:[
               {
-                path:'todos',
+                path:'publicados',
                 component:ListaAlbumsComponent
+              },
+              {
+                path:'ocultos',
+                component:ListaAlbunesOcultosComponent
               },
               {
                 path:'nuevo',
                 component:NuevoAlbumComponent
               },
               {
-                path:'add',
-                component:AddAlbumComponent
+                path:'editar/:id',
+                component:EditarAlbumComponent
+              }
+            ]
+          },
+          {
+            path:'fotos',
+            children:[
+              {
+                path:'lista/:id/:nombre',
+                component: ListaFotosComponent
               }
             ]
           }
-        ]
+        ],
       }
-    ]
+    ],
   }
 ];
 

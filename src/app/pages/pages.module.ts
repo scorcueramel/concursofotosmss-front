@@ -8,21 +8,22 @@ import { PortadaComponent } from './portada/portada.component';
 import { UsuariosModule } from './usuarios/usuarios.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AlbumModule } from './albunes/album.module';
-
+import { FotosModule } from './fotos/fotos.module';
 
 
 @NgModule({
   declarations: [
     PagesComponent,
     PortadaComponent,
-    NotFoundComponent,
+    NotFoundComponent
   ],
   imports: [
     CommonModule,
     PagesRoutingModule,
     SharedModule,
     UsuariosModule,
-    AlbumModule
+    AlbumModule,
+    FotosModule
   ],
   exports:[
     PagesComponent

@@ -7,6 +7,7 @@ import {
   MessageService,
   ConfirmEventType,
 } from 'primeng/api';
+import { SwalService } from 'src/app/services/swal.service';
 
 @Component({
   selector: 'app-lista-usuarios',
@@ -18,6 +19,7 @@ export class ListaUsuariosComponent implements OnInit {
   position: string = 'center';
 
   userDialog: boolean = false;
+
   usuarios!: User[];
 
   submitted: boolean = false;
@@ -27,24 +29,26 @@ export class ListaUsuariosComponent implements OnInit {
     private router: Router,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
+    private swalService: SwalService
   ) {}
 
   ngOnInit(): void {
     this.obtenerUsuarios();
   }
 
-
   obtenerUsuarios(): void {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', `Bearer ${localStorage.getItem('token')}`);
-
+    this.swalService.wait();
     this.userService.getAllusers({ headers: headers }).subscribe({
       next: (data: any) => {
         this.usuarios = data;
+        this.swalService.close();
       },
       error: (err: any) => {
         console.log(err);
+        this.swalService.close();
       },
     });
   }

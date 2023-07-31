@@ -1,18 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { Album } from 'src/app/interfaces/album';
 import { AlbumService } from 'src/app/services/album.service';
-import { ConfirmationService, MessageService } from 'primeng/api';
 import { SwalService } from 'src/app/services/swal.service';
 import { environment } from 'src/environments/environment';
-import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-lista-albums',
-  templateUrl: './lista-albums.component.html',
-  styleUrls: ['./lista-albums.component.css'],
+  selector: 'app-lista-albunes-ocultos',
+  templateUrl: './lista-albunes-ocultos.component.html',
+  styleUrls: ['./lista-albunes-ocultos.component.css'],
   providers: [MessageService, ConfirmationService],
 })
-export class ListaAlbumsComponent implements OnInit {
+export class ListaAlbunesOcultosComponent {
   responsiveOptions: any[] | undefined;
 
   rutaURL = environment.apiUrlArchivos;
@@ -65,10 +65,10 @@ export class ListaAlbumsComponent implements OnInit {
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', `Bearer ${localStorage.getItem('token')}`);
     this.swalService.wait();
-    this.albumService.getAactivesAlbums({ headers: headers }).subscribe({
+    this.albumService.getInactivesAlbums({ headers: headers }).subscribe({
       next: (resp: any) => {
         this.albunes = resp.albums;
-        console.log(this.albunes);
+        console.log(resp.albums);
         this.swalService.close();
       },
       error: (err: any) => {
@@ -78,7 +78,7 @@ export class ListaAlbumsComponent implements OnInit {
     });
   }
 
-  deleteAlbum(album: Album) {
+  deleteAlbum(album: Album):void{
     this.confirmationService.confirm({
       message: `Seguro de elimar el albúm ${album.nombre}?`,
       header: 'Elimar Albúm?',
@@ -120,18 +120,10 @@ export class ListaAlbumsComponent implements OnInit {
     });
   }
 
-  nuevoAlbum(): void {
-    this.router.navigate(['/menu/inicio/albunes/nuevo']);
-  }
-
-  editarAlbum(id:any): void{
-    this.router.navigate([`/menu/inicio/albunes/editar/${id}`]);
-  }
-
-  ocultar(id: number, nombre: string):void{
+  publicar(id: number, nombre: string):void{
     this.confirmationService.confirm({
-      message: `Deseas despublicar el albúm ${nombre}?`,
-      header: 'Ocultar?',
+      message: `Deseas publicar el albúm ${nombre}?`,
+      header: 'Publicar?',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         let headers = new Headers();
@@ -142,14 +134,14 @@ export class ListaAlbumsComponent implements OnInit {
         );
         this.swalService.wait();
         this.albumService
-          .dePublicateAlbum({ headers: headers }, id)
+          .publicateAlbum({ headers: headers }, id)
           .subscribe({
             next: (resp: any) => {
               this.swalService.close();
               console.log(resp);
               this.messageService.add({
                 severity: 'success',
-                summary: 'DESPUBLICADO',
+                summary: 'Publicado',
                 detail: `${resp.message}`,
                 life: 2000,
               });
@@ -168,9 +160,5 @@ export class ListaAlbumsComponent implements OnInit {
           });
       },
     });
-  }
-
-  agregarFoto(id:number,nombre:string):void{
-    this.router.navigate([`/menu/inicio/fotos/lista/${id}/${nombre}`])
   }
 }
