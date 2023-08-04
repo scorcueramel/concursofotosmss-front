@@ -19,6 +19,7 @@ export class ListaFotosComponent implements OnInit {
 
   codigo!: number;
   mensaje!: string;
+  modalFoto: boolean = false;
 
   responsiveOptions: any[] | undefined;
 
@@ -147,7 +148,20 @@ export class ListaFotosComponent implements OnInit {
 
   }
 
+  verDetalle(foto: Foto):void{
+    this.foto = {...foto};
+    this.modalFoto = true;
+  }
+
+  cerraModal():void{
+    this.modalFoto = false;
+  }
+
   nuevo() {
     this.router.navigate([`/menu/inicio/fotos/nuevo/${this.idAlbum}`]);
+  }
+
+  editarFoto(id:any): void{
+    this.router.navigate([`/menu/inicio/fotos/editar/${id}`]);
   }
 }

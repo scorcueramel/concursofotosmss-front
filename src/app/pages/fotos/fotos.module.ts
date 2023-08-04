@@ -15,11 +15,13 @@ import { FormsModule } from '@angular/forms';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { FileUploadModule } from 'primeng/fileupload';
+import { EditarFotoComponent } from './editar-foto/editar-foto.component';
+import { DialogModule } from 'primeng/dialog';
 
 
 
 @NgModule({
-  declarations: [ListaFotosComponent,NuevoFotoComponent],
+  declarations: [ListaFotosComponent,NuevoFotoComponent, EditarFotoComponent],
   imports: [
     CommonModule,
     CarouselModule,
@@ -34,8 +36,9 @@ import { FileUploadModule } from 'primeng/fileupload';
     FormsModule,
     InputTextareaModule,
     RadioButtonModule,
-    FileUploadModule
+    FileUploadModule,
+    DialogModule
   ],
-  exports: [ListaFotosComponent,NuevoFotoComponent],
+  exports: [ListaFotosComponent,NuevoFotoComponent,EditarFotoComponent],
 })
 export class FotosModule {}

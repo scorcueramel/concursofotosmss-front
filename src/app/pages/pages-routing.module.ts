@@ -17,6 +17,7 @@ import { ListaAlbunesOcultosComponent } from './albunes/lista-albunes-ocultos/li
 import { EditarAlbumComponent } from './albunes/editar-album/editar-album.component';
 import { ListaFotosComponent } from './fotos/lista-fotos/lista-fotos.component';
 import { NuevoFotoComponent } from './fotos/nuevo-foto/nuevo-foto.component';
+import { EditarFotoComponent } from './fotos/editar-foto/editar-foto.component';
 
 const routes: Routes = [
   {
@@ -80,6 +81,10 @@ const routes: Routes = [
               {
                 path:'nuevo/:idAlbum',
                 component: NuevoFotoComponent
+              },
+              {
+                path: 'editar/:id',
+                component: EditarFotoComponent
               }
             ]
           }
