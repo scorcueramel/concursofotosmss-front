@@ -140,8 +140,8 @@ export class ListaAlbunesOcultosComponent {
               this.swalService.close();
               console.log(resp);
               this.messageService.add({
-                severity: 'success',
-                summary: 'Publicado',
+                severity: resp.severity,
+                summary: resp.summary,
                 detail: `${resp.message}`,
                 life: 2000,
               });
@@ -160,5 +160,9 @@ export class ListaAlbunesOcultosComponent {
           });
       },
     });
+  }
+
+  ocultos():void{
+    this.router.navigate(['/menu/inicio/albunes/publicados'])
   }
 }

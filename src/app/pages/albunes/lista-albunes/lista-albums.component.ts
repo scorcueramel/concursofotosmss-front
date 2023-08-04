@@ -19,8 +19,6 @@ export class ListaAlbumsComponent implements OnInit {
 
   nuevoDialogo: boolean = false;
 
-  submited: boolean = false;
-
   albunes: Album[] = [];
 
   album: Album = {
@@ -98,8 +96,8 @@ export class ListaAlbumsComponent implements OnInit {
               this.swalService.close();
               console.log(resp);
               this.messageService.add({
-                severity: 'success',
-                summary: 'Eliminado',
+                severity: resp.severity,
+                summary: resp.summary,
                 detail: `${resp.message}`,
                 life: 3000,
               });
@@ -148,8 +146,8 @@ export class ListaAlbumsComponent implements OnInit {
               this.swalService.close();
               console.log(resp);
               this.messageService.add({
-                severity: 'success',
-                summary: 'DESPUBLICADO',
+                severity: resp.severity,
+                summary: resp.summary,
                 detail: `${resp.message}`,
                 life: 2000,
               });
@@ -172,5 +170,9 @@ export class ListaAlbumsComponent implements OnInit {
 
   agregarFoto(id:number,nombre:string):void{
     this.router.navigate([`/menu/inicio/fotos/lista/${id}/${nombre}`])
+  }
+
+  ocultos():void{
+    this.router.navigate(['/menu/inicio/albunes/ocultos']);
   }
 }

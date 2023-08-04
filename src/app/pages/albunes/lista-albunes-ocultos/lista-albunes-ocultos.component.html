@@ -1,6 +1,19 @@
 <div class="grid">
   <div class="col">
     <div class="text-center p-3 mx-3 border-round-sm bg-white font-bold">
+      <p-toolbar styleClass="mb-4 gap-2">
+        <ng-template pTemplate="left">
+          <h3>ALBUMS CON ESTADO DE OCULTOS</h3>
+        </ng-template>
+        <ng-template pTemplate="right">
+          <p-button
+            label="ALBUMS PUBLICOS"
+            styleClass="p-button-raised"
+            icon="pi pi-play"
+            (onClick)="ocultos()"
+          ></p-button>
+        </ng-template>
+      </p-toolbar>
       <div class="grid wrapper-contenedor">
         <div class="col-auto">
           <p-carousel

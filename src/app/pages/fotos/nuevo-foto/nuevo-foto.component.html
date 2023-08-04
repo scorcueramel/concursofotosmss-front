@@ -1,3 +1,115 @@
-<div class="wrapper-content">
-  <h1>Nueva Foto</h1>
-</div>
+<p-toast></p-toast>
+<p-card class="text-center">
+  <div class="overflow-hidden">
+    <img
+      [src]="'../../../../assets/img/upload-image.png'"
+      alt="Cargar Imagen"
+      width="500"
+      height="245"
+    />
+  </div>
+  <div class="global-content">
+    <div class="content-form">
+      <input type="hidden"[(ngModel)]="foto.album_id">
+      <div class="p-inputgroup mb-3 content-image">
+        <div class="p-inputgroup imagen">
+          <img
+            [src]="
+              previsualizar[0]
+                ? previsualizar[0]
+                : '../../../../assets/img/default.png'
+            "
+            alt="Imagen"
+            height="220"
+          />
+        </div>
+      </div>
+      <div class="p-inputgroup mb-3">
+        <div class="p-inputgroup">
+          <button id="foto" class="w-full">
+            <label for="cargaimagen" class="subir-imagen"><i class="pi pi-image mr-3 icono"></i>Subir Imagen</label>
+            <input type="file" [style]="{display:'none'}" id="cargaimagen" (change)="processFiles($event)"
+            accept="jpg, jpeg, png" required/>
+          </button>
+        </div>
+      </div>
+      <div class="p-inputgroup">
+        <div class="p-inputgroup mr-3">
+          <span class="p-inputgroup-addon">
+            <i class="pi pi-user"></i>
+          </span>
+          <input pInputText placeholder="Nombre del participante" name="nombre_participante" [(ngModel)]="foto.nombre_participante"/>
+        </div>
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon">
+            <i class="pi pi-tag"></i>
+          </span>
+          <input type="text" pInputText placeholder="Titulo de la foto" name="titulo" [(ngModel)]="foto.titulo"/>
+        </div>
+      </div>
+      <div class="p-inputgroup mt-3">
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon">
+            <i class="pi pi-map-marker"></i>
+          </span>
+          <input type="text" pInputText placeholder="Lugar de la foto" name="lugar" [(ngModel)]="foto.lugar"/>
+        </div>
+      </div>
+      <div class="p-inputgroup mt-3">
+        <textarea
+          pKeyFilter="int"
+          rows="3"
+          cols="30"
+          pInputTextarea
+          placeholder="Pequeña reseña de la foto (Máximo 600 caracteres)"
+          class="resenia"
+          [(ngModel)]="foto.resenia"
+        ></textarea>
+      </div>
+      <div class="p-inputgroup mt-3">
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon">
+            <i class="pi pi-star"></i>
+          </span>
+          <input type="text" pInputText placeholder="Motivación" [(ngModel)]="foto.motivacion"/>
+        </div>
+        <div class="p-inputgroup">
+          <label class="flex align-items-center ml-3">Publicado</label>
+          <div class="flex align-items-center ml-6">
+            <p-radioButton
+              name="publicado"
+              value="1"
+              inputId="SI"
+              [(ngModel)]="foto.publicado"
+            ></p-radioButton>
+            <label for="SI" class="ml-2 mr-4">SI</label>
+            <p-radioButton
+              name="publicado"
+              value="0"
+              inputId="NO"
+              [(ngModel)]="foto.publicado"
+            ></p-radioButton>
+            <label for="NO" class="ml-2">NO</label>
+          </div>
+        </div>
+      </div>
+      <div class="p-inputgroup mt-4">
+        <div class="p-inputgroup">
+          <span class="p-buttonset w-full">
+            <p-button
+              icon="pi pi-save"
+              label="Registrar"
+              (onClick)="guardar()"
+            ></p-button>
+            <p-button
+              icon="pi pi-replay"
+              label="Volver"
+              styleClass="p-button-danger"
+              (onClick)="volver()"
+            ></p-button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</p-card>

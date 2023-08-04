@@ -43,7 +43,6 @@ export class NuevoAlbumComponent implements OnInit {
     if (this.archivos.length > 0) {
       const formData: FormData = new FormData();
       formData.append(`portada`, this.archivos[0][0], this.archivos[0][0].name);
-
       this.previsualizacion(event);
 
       this.albumService.storeImage({ headers: headers }, formData).subscribe({
@@ -79,7 +78,7 @@ export class NuevoAlbumComponent implements OnInit {
           this.swalService.close()
           setTimeout(()=>{
             this.router.navigate(['/menu/inicio/albunes/publicados']);
-          },900);
+          },500);
         },
         error: (err: any) => {
           this.swalService.close()
@@ -102,10 +101,6 @@ export class NuevoAlbumComponent implements OnInit {
       this.previsualizar.pop();
       this.previsualizar.push(reader.result);
     };
-  }
-
-  eliminarFoto() {
-    this.previsualizar = [];
   }
 
   volver(): void {

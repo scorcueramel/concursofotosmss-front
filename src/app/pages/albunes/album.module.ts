@@ -24,8 +24,6 @@ import { EditarAlbumComponent } from './editar-album/editar-album.component';
   declarations: [ListaAlbumsComponent, NuevoAlbumComponent, ListaAlbunesOcultosComponent, EditarAlbumComponent],
   imports: [
     CommonModule,
-    CardModule,
-    PanelModule,
     ToolbarModule,
     ConfirmDialogModule,
     InputTextModule,
@@ -38,6 +36,6 @@ import { EditarAlbumComponent } from './editar-album/editar-album.component';
     InputSwitchModule,
     TooltipModule
   ],
-  exports: [ListaAlbumsComponent, NuevoAlbumComponent],
+  exports: [ListaAlbumsComponent, NuevoAlbumComponent, ListaAlbunesOcultosComponent, EditarAlbumComponent],
 })
 export class AlbumModule {}

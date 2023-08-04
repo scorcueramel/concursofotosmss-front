@@ -61,6 +61,9 @@ export class NuevoUsuarioComponent implements OnInit {
               );
             this.swalService.close();
             this.datosUsuario.reset();
+            setTimeout(()=>{
+              this.router.navigate(['/menu/inicio/usuarios/todos']);
+            },600);
             console.log(resp);
         },
         error: (err) => {

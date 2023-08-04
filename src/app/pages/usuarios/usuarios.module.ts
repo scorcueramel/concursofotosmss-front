@@ -35,7 +35,8 @@ import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.componen
   ],
   exports:[
     NuevoUsuarioComponent,
-    ListaUsuariosComponent
+    ListaUsuariosComponent,
+    EditarUsuarioComponent
   ]
 })
 export class UsuariosModule { }

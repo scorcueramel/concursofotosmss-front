@@ -1,6 +1,12 @@
-.wrapper-general{
+.wrapper-contenedor{
   background-color: #fff;
   padding: 20px;
-  margin: 20px;
   border-radius: 10px;
+  width: 95vw;
+  display: flex;
+  justify-content: center;
+}
+
+h2{
+  text-align: center;
 }

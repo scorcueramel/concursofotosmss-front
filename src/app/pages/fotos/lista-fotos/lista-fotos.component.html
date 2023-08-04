@@ -1,3 +1,112 @@
-<div class="wrapper-general">
-  <h1>{{ nombre }}</h1>
+<div class="grid">
+  <div class="col">
+    <div class="text-center p-3 mx-3 border-round-sm bg-white font-bold">
+      <p-toolbar styleClass="mb-4 gap-2">
+        <ng-template pTemplate="left">
+          <h3>{{ nombre }}</h3>
+        </ng-template>
+        <ng-template pTemplate="right">
+          <div class="p-inputgroup">
+            <p-button
+            label="CARGAR FOTO"
+            styleClass="p-button-raised"
+            icon="pi pi-upload"
+            (onClick)="nuevo()"
+            ></p-button>
+          </div>
+        </ng-template>
+      </p-toolbar>
+      <div class="grid wrapper-contenedor">
+        <div class="col-auto">
+          <p-carousel
+            [value]="fotos"
+            [numVisible]="3"
+            [numScroll]="3"
+            [circular]="false"
+            [responsiveOptions]="responsiveOptions"
+            *ngIf="codigo != 201; else sinfotos"
+          >
+            <ng-template let-foto pTemplate="item">
+              <div
+                class="border-1 surface-border border-round m-2 text-center py-5 px-3"
+              >
+                <div class="mb-3">
+                  <img
+                    [src]="
+                      foto.archivo
+                        ? rutaURL + foto.archivo
+                        : './../../../../assets/img/default.png'
+                    "
+                    [alt]="foto.titulo"
+                    class="shadow-2 w-6"
+                    height="290"
+                    width="220"
+                  />
+                </div>
+                <div>
+                  <h4 class="mb-1">{{ foto.titulo }}</h4>
+                  <p-badge [value]="'PUBLICADO'" *ngIf="foto.publicado;else noPublicado"></p-badge>
+                  <ng-template #noPublicado>
+                    <p-badge [value]="'NO PUBLICADO'" severity="danger"></p-badge>
+                  </ng-template>
+
+                  <div class="car-buttons mt-5">
+                    <!-- publicado true -->
+                    <p-button
+                    type="button"
+                    styleClass="p-button-warning p-button-rounded mr-2"
+                    icon="pi pi-times"
+                    pTooltip="DESPUBLICAR?"
+                    tooltipPosition="bottom"
+                    (onClick)="estadoFoto(foto.id)"
+                    *ngIf="foto.publicado?foto.publicado:false; else oculta"
+                  ></p-button>
+                  <!-- publicado false -->
+                  <ng-template #oculta>
+                    <p-button
+                    type="button"
+                    styleClass="p-button-warning p-button-rounded mr-2"
+                    icon="pi pi-check"
+                    pTooltip="PUBLICAR?"
+                    tooltipPosition="bottom"
+                    (onClick)="estadoFoto(foto.id)"
+                  ></p-button>
+                  </ng-template>
+                  <!-- detalle -->
+                    <p-button
+                      type="button"
+                      styleClass="p-button p-button-rounded mr-2"
+                      icon="pi pi-eye"
+                      pTooltip="DETALLES DE LA FOTO"
+                      tooltipPosition="bottom"
+                    ></p-button>
+                    <!-- editar -->
+                    <p-button
+                      type="button"
+                      styleClass="p-button-success p-button-rounded mr-2"
+                      icon="pi pi-pencil"
+                      *ngIf="foto.publicado?foto.publicado:false"
+                    ></p-button>
+                  <!-- eliminar -->
+                    <p-button
+                      type="button"
+                      styleClass="p-button-danger p-button-rounded mr-2"
+                      icon="pi pi-trash"
+                    ></p-button>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </p-carousel>
+          <ng-template #sinfotos>
+            <h2>
+              {{ mensaje }}
+            </h2>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+<p-confirmDialog [style]="{ width: '450px' }"> </p-confirmDialog>
+<p-toast></p-toast>

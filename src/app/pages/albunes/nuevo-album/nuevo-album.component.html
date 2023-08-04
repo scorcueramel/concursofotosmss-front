@@ -9,25 +9,18 @@
     <div class="text-center mb-5">
       <img [src]="previsualizar[0]" alt="Imagen" *ngIf="previsualizar[0]?previsualizar[0]:null" width="200" alt="Image"
         height="250" />
-      <br>
-      <p-button icon="pi pi-eraser" label="QUITAR IMAGEN" styleClass="p-button-raised p-button-text w-20rem mt-4 p-button-danger"
-        *ngIf="previsualizar[0]?previsualizar[0]:null" (onClick)=" eliminarFoto()">
-      </p-button>
     </div>
 
     <form>
       <div>
         <label for="email1" class="block text-900 font-medium mb-2">PORTADA</label>
-
         <input id="portada" type="file" class="w-full mb-3 file" required (change)="processFiles($event)"
           accept="jpg, jpeg, png" />
         <input type="hidden" [(ngModel)]="album.portada" name="portada">
-
         <label for="nombre" class="block text-900 font-medium mb-2">NOMBRE PARA EL ALBÚM</label>
         <input id="nombre" type="text" pInputText class="w-full mb-3" [(ngModel)]="album.nombre"
           name="nombre" />
-
-        <label>Publicado</label><br>
+        <label>PUBLICADO</label><br>
           <p-radioButton name="publicado" value="1" [(ngModel)]="album.publicado"
             inputId="si" class="mt-2"></p-radioButton>
           <label for="si" class="ml-2 mr-5">SI</label>

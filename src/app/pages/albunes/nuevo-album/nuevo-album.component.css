@@ -16,4 +16,5 @@
 
 #portada:focus{
   box-shadow: rgba(191, 219, 254, 0.8) 0px 0px 0px 3px;
+  border: 1px solid #3B82F6;
 }
