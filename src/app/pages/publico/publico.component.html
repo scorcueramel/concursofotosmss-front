@@ -1,0 +1,49 @@
+<div class="card mb-2">
+  <p-menubar>
+    <ng-template pTemplate="start">
+      <img
+        src="../../../assets/img/Logo-municipalidad.png"
+        height="65"
+        class="mr-2"
+      />
+    </ng-template>
+    <ng-template pTemplate="end">
+      <h2>CATEGORÍAS</h2>
+    </ng-template>
+  </p-menubar>
+</div>
+<div class="wrapp-general">
+  <div class="grid">
+    <div class="flex flex-column" *ngFor="let album of albums">
+      <button
+        (click)="verFotos(album.id)"
+        [style]="{
+          'text-decoration': 'none',
+          background: 'transparent',
+          border: 'transparent',
+          cursor: 'pointer'
+        }"
+        pTooltip="Click para ingresar al albúm"
+        tooltipPosition="bottom"
+      >
+        <div class="card">
+          <p-card [header]="album.nombre" [style]="{ width: '440px', margin:'10px 0'}">
+            <ng-template
+              pTemplate="header"
+              *ngIf="album.portada != 'default.png'; else sinPortada"
+            >
+              <img [alt]="album.nombre" [src]="rutaURL + album.portada" width="400" height="320"/>
+            </ng-template>
+            <ng-template #sinPortada>
+              <img
+                [alt]="album.nombre"
+                [src]="'../../../../assets/img/default.png'"
+                width="400" height="320"
+              />
+            </ng-template>
+          </p-card>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>

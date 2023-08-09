@@ -131,9 +131,9 @@ export class EditarAlbumComponent {
     };
   }
 
-  eliminarFoto() {
+  quitarImagen():void{
     this.previsualizar = [];
-    this.album.portada = '';
+    this.archivos = [];
   }
 
   volver(): void {

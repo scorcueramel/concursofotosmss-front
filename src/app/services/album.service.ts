@@ -52,4 +52,8 @@ export class AlbumService {
   deleteAlbum(cabecera:Object, id:any):Observable<Object>{
     return this.httpCliet.post<Album>(`${this.URL}${this.URI}deleteAlbum/${id}`,null,cabecera);
   }
+
+  getAlbumPublic():Observable<Album[]>{
+    return this.httpCliet.get<Album[]>(`${this.URL}general/albumPublico`);
+  }
 }

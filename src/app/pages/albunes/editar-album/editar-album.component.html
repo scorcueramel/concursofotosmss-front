@@ -10,9 +10,11 @@
       <img [src]="previsualizar[0]?previsualizar[0]:'./../../../../assets/img/default.png'" alt="Imagen" width="200" alt="Image"
         height="250" />
       <br>
-      <p-button icon="pi pi-eraser" label="QUITAR IMAGEN" styleClass="p-button-raised p-button-text w-20rem mt-4 p-button-danger"
-        *ngIf="previsualizar[0]?previsualizar[0]:previsualizar[0]" (onClick)=" eliminarFoto()">
-      </p-button>
+      <div class="text-center mb-5">
+        <p-button label="Quitar foto" icon="pi pi-arrow-circle-left"
+        styleClass="p-button-rounded p-button-danger p-button-text p-button-raised" *ngIf="previsualizar[0]!=null"
+        (onClick)="quitarImagen()"></p-button>
+      </div>
     </div>
 
     <form>

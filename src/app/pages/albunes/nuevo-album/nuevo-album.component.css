@@ -8,6 +8,7 @@
   border-radius: 5px;
   border: 1px solid rgba(128, 128, 128, 0.401);
   cursor: pointer;
+  background: transparent;
 }
 
 #portada:hover{
@@ -18,3 +19,4 @@
   box-shadow: rgba(191, 219, 254, 0.8) 0px 0px 0px 3px;
   border: 1px solid #3B82F6;
 }
+

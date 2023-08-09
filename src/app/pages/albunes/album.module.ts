@@ -3,9 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ListaAlbumsComponent } from './lista-albunes/lista-albums.component';
 import { NuevoAlbumComponent } from './nuevo-album/nuevo-album.component';
 
-import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
-import { PanelModule } from 'primeng/panel';
 import { ToolbarModule } from 'primeng/toolbar';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { InputTextModule } from 'primeng/inputtext';

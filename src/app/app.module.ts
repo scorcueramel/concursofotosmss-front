@@ -19,7 +19,7 @@ import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
     BrowserAnimationsModule,
     AuthRoutingModule,
     AuthModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     {provide: JWT_OPTIONS, useValue: JWT_OPTIONS},

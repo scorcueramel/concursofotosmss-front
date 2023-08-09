@@ -112,48 +112,89 @@ export class ListaFotosComponent implements OnInit {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', `Bearer ${localStorage.getItem('token')}`);
-    if(foto.publicado){
-      this.fotoService.dePublicateFoto({headers:headers},this.foto.id).subscribe({
-        next: (resp:any)=>{
-          this.obtenerFotos();
-          this.messageService.add({
-            severity: resp.severity,
-            summary: resp.summary,
-            detail: `${resp.content}`,
-            life: 2000,
-          });
-          console.log(resp);
-        },
-        error: (err:any)=>{
-          console.log(err.error);
-        }
-      });
-    }else{
-      this.fotoService.publicateFoto({headers:headers},this.foto.id).subscribe({
-        next: (resp:any)=>{
-          this.obtenerFotos();
-          this.messageService.add({
-            severity: resp.severity,
-            summary: resp.summary,
-            detail: `${resp.content}`,
-            life: 2000,
-          });
-          console.log(resp);
-        },
-        error: (err:any)=>{
-          console.log(err.error);
-        }
-      });
+    if (foto.publicado) {
+      this.fotoService
+        .dePublicateFoto({ headers: headers }, this.foto.id)
+        .subscribe({
+          next: (resp: any) => {
+            this.obtenerFotos();
+            this.messageService.add({
+              severity: resp.severity,
+              summary: resp.summary,
+              detail: `${resp.content}`,
+              life: 2000,
+            });
+            console.log(resp);
+          },
+          error: (err: any) => {
+            console.log(err.error);
+          },
+        });
+    } else {
+      this.fotoService
+        .publicateFoto({ headers: headers }, this.foto.id)
+        .subscribe({
+          next: (resp: any) => {
+            this.obtenerFotos();
+            this.messageService.add({
+              severity: resp.severity,
+              summary: resp.summary,
+              detail: `${resp.content}`,
+              life: 2000,
+            });
+            console.log(resp);
+          },
+          error: (err: any) => {
+            console.log(err.error);
+          },
+        });
     }
-
   }
 
-  verDetalle(foto: Foto):void{
-    this.foto = {...foto};
+  verDetalle(foto: Foto): void {
+    this.foto = { ...foto };
     this.modalFoto = true;
   }
 
-  cerraModal():void{
+  eliminarFoto(foto: Foto): void {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', `Bearer ${localStorage.getItem('token')}`);
+
+    this.confirmationService.confirm({
+      message: `Seguro de elimar la foto ${foto.titulo}?`,
+      header: 'Elimar Foto?',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.swalService.wait();
+        this.fotoService.deletePhoto({ headers: headers }, foto.id).subscribe({
+          next: (resp: any) => {
+            this.swalService.close();
+            console.log(resp);
+            this.messageService.add({
+              severity: resp.severity,
+              summary: resp.summary,
+              detail: `${resp.content}`,
+              life: 3000,
+            });
+            this.obtenerFotos();
+          },
+          error: (err: any) => {
+            this.swalService.close();
+            this.messageService.add({
+              severity: 'error',
+              summary: 'No Eliminado',
+              detail: `${err.error.content}`,
+              life: 3000,
+            });
+            console.log(err);
+          },
+        });
+      },
+    });
+  }
+
+  cerraModal(): void {
     this.modalFoto = false;
   }
 
@@ -161,7 +202,7 @@ export class ListaFotosComponent implements OnInit {
     this.router.navigate([`/menu/inicio/fotos/nuevo/${this.idAlbum}`]);
   }
 
-  editarFoto(id:any): void{
+  editarFoto(id: any): void {
     this.router.navigate([`/menu/inicio/fotos/editar/${id}`]);
   }
 }

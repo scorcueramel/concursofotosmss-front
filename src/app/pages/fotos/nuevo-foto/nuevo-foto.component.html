@@ -24,6 +24,11 @@
           />
         </div>
       </div>
+      <div class="text-center mb-5">
+        <p-button label="Quitar foto" icon="pi pi-arrow-circle-left"
+        styleClass="p-button-rounded p-button-danger p-button-text p-button-raised" *ngIf="previsualizar[0]!=null"
+        (onClick)="quitarImagen()"></p-button>
+      </div>
       <div class="p-inputgroup mb-3">
         <div class="p-inputgroup">
           <button id="foto" class="w-full">

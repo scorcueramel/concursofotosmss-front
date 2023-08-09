@@ -1,7 +1,8 @@
 .grid{
   height: 100%;
-  background: rgb(2,0,36);
-  background: linear-gradient(148deg, rgba(2,0,36,1) 0%, rgba(0,94,165,1) 45%, rgba(1,97,165,1) 51%, rgba(29,211,176,1) 91%);
+  /* background: rgb(2,0,36);
+  background: linear-gradient(148deg, rgba(2,0,36,1) 0%, rgba(0,94,165,1) 45%, rgba(1,97,165,1) 51%, rgba(29,211,176,1) 91%); */
+  background-color: rgba(1, 97, 165, 1);
 }
 
 .errormessage{

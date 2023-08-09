@@ -43,4 +43,16 @@ export class FotoService {
   registerFoto(cabecera:Object, foto:Foto):Observable<Foto>{
     return this.httpClient.post<Foto>(`${this.URL}${this.URI}create`,foto,cabecera);
   }
+
+  updateFoto(cabecera:Object, foto:Foto,id:any):Observable<Foto>{
+    return this.httpClient.post<Foto>(`${this.URL}${this.URI}updateFoto/${id}`,foto,cabecera);
+  }
+
+  deletePhoto(cabecera:Object,id:number):Observable<Foto>{
+    return this.httpClient.post<Foto>(`${this.URL}${this.URI}deleteFoto/${id}`,null,cabecera);
+  }
+
+  getPublicFotosAlbum(id:number):Observable<Foto[]>{
+    return this.httpClient.get<Foto[]>(`${this.URL}general/fotosAlbumPublic/${id}`);
+  }
 }

@@ -39,7 +39,6 @@ export class NuevoFotoComponent implements OnInit{
     private swalService : SwalService,
     private fotoService: FotoService,
     private location: Location,
-    private router: Router,
     private messageService: MessageService
   ){}
 
@@ -117,8 +116,9 @@ export class NuevoFotoComponent implements OnInit{
     };
   }
 
-  eliminarFoto() {
+  quitarImagen():void{
     this.previsualizar = [];
+    this.archivos = [];
   }
 
   volver(){

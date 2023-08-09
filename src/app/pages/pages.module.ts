@@ -9,21 +9,24 @@ import { UsuariosModule } from './usuarios/usuarios.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AlbumModule } from './albunes/album.module';
 import { FotosModule } from './fotos/fotos.module';
-
+import { PublicoModule } from './publico/publico.module';
+import { FotosPublicasModule } from './fotos-publicas/fotos-publicas.module';
 
 @NgModule({
   declarations: [
     PagesComponent,
     PortadaComponent,
-    NotFoundComponent
-  ],
+    NotFoundComponent,
+    ],
   imports: [
     CommonModule,
     PagesRoutingModule,
     SharedModule,
     UsuariosModule,
     AlbumModule,
-    FotosModule
+    FotosModule,
+    PublicoModule,
+    FotosPublicasModule
   ],
   exports:[
     PagesComponent

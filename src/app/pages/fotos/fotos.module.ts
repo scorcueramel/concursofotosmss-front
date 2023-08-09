@@ -20,6 +20,7 @@ import { DialogModule } from 'primeng/dialog';
 
 
 
+
 @NgModule({
   declarations: [ListaFotosComponent,NuevoFotoComponent, EditarFotoComponent],
   imports: [

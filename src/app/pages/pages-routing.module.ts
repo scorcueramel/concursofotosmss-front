@@ -83,7 +83,7 @@ const routes: Routes = [
                 component: NuevoFotoComponent
               },
               {
-                path: 'editar/:id',
+                path: 'editar/:idFoto',
                 component: EditarFotoComponent
               }
             ]

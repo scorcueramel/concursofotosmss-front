@@ -32,7 +32,6 @@ export class NuevoAlbumComponent implements OnInit {
 
   processFiles(event: any): void {
     let headers = new Headers();
-    // con esto enviar archivos y texto ENCTYPE
     headers.append('enctype', 'multipart/form-data;');
     headers.append('Authorization', `Bearer ${localStorage.getItem('token')}`);
 
@@ -105,6 +104,11 @@ export class NuevoAlbumComponent implements OnInit {
 
   volver(): void {
     this.router.navigate(['/menu/inicio/albunes/publicados']);
+  }
+
+  quitarImagen():void{
+    this.previsualizar = [];
+    this.archivos = [];
   }
 
   show(summary: any, severity: any, mensaje: any, name: any):void {
