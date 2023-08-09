@@ -1,0 +1,35 @@
+.container{
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+}
+.tarjeta{
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.cuerpo{
+  padding: 20px
+}
+
+.izquierda{
+  float: left;
+}
+
+.derecha{
+  float: right;
+}
+
+.reacciones{
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.contador{
+  display: flex;
+  justify-content: center;
+}

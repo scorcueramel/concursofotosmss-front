@@ -11,6 +11,7 @@ import { AlbumModule } from './albunes/album.module';
 import { FotosModule } from './fotos/fotos.module';
 import { PublicoModule } from './publico/publico.module';
 import { FotosPublicasModule } from './fotos-publicas/fotos-publicas.module';
+import { VotarFotoModule } from './votar-foto/votar-foto.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FotosPublicasModule } from './fotos-publicas/fotos-publicas.module';
     AlbumModule,
     FotosModule,
     PublicoModule,
-    FotosPublicasModule
+    FotosPublicasModule,
+    VotarFotoModule
   ],
   exports:[
     PagesComponent

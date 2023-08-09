@@ -1,1 +1,70 @@
-<p>votar-foto works!</p>
+<div class="card mb-2">
+  <p-menubar>
+    <ng-template pTemplate="start">
+      <img
+        src="../../../assets/img/Logo-municipalidad.png"
+        height="65"
+        class="mr-2"
+      />
+    </ng-template>
+    <ng-template pTemplate="end">
+      <p-button
+        label="Volver"
+        (onClick)="volver()"
+        icon="pi pi-arrow-left"
+      ></p-button>
+    </ng-template>
+  </p-menubar>
+</div>
+<div class="container">
+  <div class="tarjeta">
+    <div class="izquierda">
+      <div class="imagen">
+        <p-image
+        [src]="rutaURL + foto.archivo"
+        [alt]="foto.titulo"
+        width="800"
+        height="580"
+        ></p-image>
+      </div>
+    </div>
+
+    <div class="derecha">
+      <div class="cuerpo">
+        <div class="titulo">
+          <h1>{{ foto.titulo }}</h1>
+        </div>
+        <div class="lugar">
+          <p>{{ foto.lugar }}</p>
+        </div>
+        <div class="resenia">
+          <p>{{ foto.resenia }}</p>
+        </div>
+        <div class="motivacion">
+          <p>{{ foto.motivacion }}</p>
+        </div>
+      </div>
+      <div class="reacciones">
+        <div class="botones">
+          <p-button
+          type="button"
+          styleClass="p-button p-button-rounded mr-2"
+          icon="pi pi-thumbs-up-fill"
+          *ngIf="!reaccion"
+          (onClick)="reaccionar(foto.id,1,ipCliente)"
+          ></p-button>
+          <p-button
+          type="button"
+          styleClass="p-button-success p-button-rounded mr-2"
+          icon="pi pi-thumbs-down-fill"
+          *ngIf="reaccion"
+          (onClick)="reaccionar(foto.id,2,ipCliente)"
+          ></p-button>
+        </div>
+        <div class="contador">
+          <h3>115 <span class="pi pi-heart-fill text-red-500"></span></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
