@@ -25,6 +25,7 @@
         [alt]="foto.titulo"
         width="800"
         height="580"
+        [preview]="true"
         ></p-image>
       </div>
     </div>
@@ -37,7 +38,7 @@
         <div class="lugar">
           <p>{{ foto.lugar }}</p>
         </div>
-        <div class="resenia">
+        <div class="resenia text-justify">
           <p>{{ foto.resenia }}</p>
         </div>
         <div class="motivacion">
@@ -62,7 +63,8 @@
           ></p-button>
         </div>
         <div class="contador">
-          <h3>115 <span class="pi pi-heart-fill text-red-500"></span></h3>
+          <h3 *ngIf="contResp > 0">{{ contResp }} <span class="pi pi-heart-fill text-red-500"></span></h3>
+          <h3 *ngIf="contResp <= 0">{{ contResp }} <span class="pi pi-heart-fill text-gray-500"></span></h3>
         </div>
       </div>
     </div>

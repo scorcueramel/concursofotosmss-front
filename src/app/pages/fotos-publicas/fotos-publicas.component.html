@@ -8,33 +8,46 @@
       />
     </ng-template>
     <ng-template pTemplate="end">
-      <p-button label="Volver" (onClick)="volver()" icon="pi pi-arrow-left"></p-button>
+      <p-button
+        label="Volver"
+        (onClick)="volver()"
+        icon="pi pi-arrow-left"
+      ></p-button>
     </ng-template>
   </p-menubar>
 </div>
-<div class="grid flex justify-content-around">
-  <div class="flex flex-column" *ngFor="let foto of fotos">
-    <div class="imagen">
-      <p-image
-        [src]="rutaURL + foto.archivo"
-        alt="Image"
-        width="400"
-        height="320"
-        [preview]="true"
-        pTooltip="Ver tamaño original"
-        tooltipPosition="bottom"
-      ></p-image>
-      <div class="car-buttons mt-2 flex justify-content-around flex-wrap ">
-        <h3 class="mb-1">{{ foto.titulo }}</h3>
-        <p-button
-          type="button"
-          styleClass="p-button p-button-rounded mr-2"
-          icon="pi pi-angle-double-right"
-          pTooltip="Elegir como favorito"
+<div class="contenedor" *ngIf="fotos.length > 0">
+  <div class="grid flex justify-content-around">
+    <div class="flex flex-column" *ngFor="let foto of fotos">
+      <div class="imagen">
+        <p-image
+          [src]="rutaURL + foto.archivo"
+          alt="Image"
+          width="400"
+          height="320"
+          [preview]="true"
+          pTooltip="Ver tamaño original"
           tooltipPosition="bottom"
-          (onClick)="votarFoto(foto.id)"
-        ></p-button>
+        ></p-image>
+        <div class="car-buttons mt-2 flex justify-content-around flex-wrap">
+          <h3 class="mb-1">{{ foto.titulo }}</h3>
+          <p-button
+            type="button"
+            styleClass="p-button p-button-rounded mr-2"
+            icon="pi pi-angle-double-right"
+            pTooltip="Elegir como favorito"
+            tooltipPosition="bottom"
+            (onClick)="votarFoto(foto.id)"
+          ></p-button>
+        </div>
       </div>
+    </div>
+  </div>
+</div>
+<div class="contenedor" *ngIf="fotos.length <= 0">
+  <div class="grid flex justify-content-around">
+    <div class="flex flex-column">
+      <h1>No se encontraron fotos en este albúm</h1>
     </div>
   </div>
 </div>

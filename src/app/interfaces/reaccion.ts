@@ -3,4 +3,5 @@ export interface Reaccion {
   tipo_reaccion?: boolean;
   fecha?: Date;
   terminal_ip?: string;
+  conatdor?:number;
 }

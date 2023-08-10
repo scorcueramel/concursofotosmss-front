@@ -27,4 +27,8 @@ export class ReactionService {
   reacctionsIp(ip:string):Observable<any[]>{
     return this.httpClient.get<any[]>(`${this.URL}${this.URI}reacciones/${ip}`);
   }
+
+  getReactionsCount(id:number):Observable<any>{
+    return this.httpClient.get<any>(`${this.URL}${this.URI}getReaccions/${id}`);
+  }
 }
