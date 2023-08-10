@@ -1,0 +1,41 @@
+<div class="overflow-hidden wrapper-portada">
+  <div class="tabla">
+    <div class="card">
+      <p-table
+        [value]="finalistas"
+        [tableStyle]="{ 'min-width': '60rem' }"
+      >
+        <ng-template pTemplate="caption">
+          <div class="flex align-items-center justify-content-between">
+            TOP 3 FINALISTAS
+            <p-button icon="pi pi-folder" (onClick)="irAlbunes()" pTooltip="Ir a albúms" tooltipPosition="top"></p-button>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Nombre Participante</th>
+            <th>Título</th>
+            <th>Archivo</th>
+            <th>Fecha de Carga</th>
+            <th>Albúm</th>
+            <th>Reacciones</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-fl>
+          <tr>
+            <td>{{ fl.nombre_participante }}</td>
+            <td>{{ fl.titulo }}</td>
+            <td>
+              <button style="background-color: transparent; border: transparent; cursor: pointer;" (click)="verFoto(fl.id)" pTooltip="Foto y Detalles" tooltipPosition="bottom">
+                <img [src]="rutaURL+fl.archivo" [alt]="fl.titulo" width="100" class="shadow-4" />
+              </button>
+            </td>
+            <td>{{ fl.fecha_carga }}</td>
+            <td>{{ fl.album }}</td>
+            <td>{{ fl.total }}&nbsp; <i class="pi pi-heart-fill text-red-500"></i></td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>

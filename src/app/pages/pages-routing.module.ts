@@ -7,7 +7,6 @@ import { AuthAdmin } from '../guards/authAdmin.guard';
 
 
 import { PagesComponent } from './pages.component';
-import { PortadaComponent } from './portada/portada.component';
 import { NuevoUsuarioComponent } from './usuarios/nuevo-usuario/nuevo-usuario.component';
 import { ListaUsuariosComponent } from './usuarios/lista-usuarios/lista-usuarios.component';
 import { EditarUsuarioComponent } from './usuarios/editar-usuario/editar-usuario.component';
@@ -18,6 +17,7 @@ import { EditarAlbumComponent } from './albunes/editar-album/editar-album.compon
 import { ListaFotosComponent } from './fotos/lista-fotos/lista-fotos.component';
 import { NuevoFotoComponent } from './fotos/nuevo-foto/nuevo-foto.component';
 import { EditarFotoComponent } from './fotos/editar-foto/editar-foto.component';
+import { FinalistasComponent } from './finalistas/finalistas.component';
 
 const routes: Routes = [
   {
@@ -30,7 +30,7 @@ const routes: Routes = [
         children: [
           {
             path: 'portada',
-            component: PortadaComponent,
+            component: FinalistasComponent,
           },
           {
             path:'usuarios',

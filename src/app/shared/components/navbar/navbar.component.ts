@@ -19,6 +19,11 @@ export class NavbarComponent implements OnInit {
   validForAll():void{
     this.items = [
       {
+        label: 'Inicio',
+        icon: 'pi pi-microsoft',
+        routerLink: '/menu/inicio/portada'
+      },
+      {
         label: 'Album',
         icon: 'pi pi-folder',
         items: [
