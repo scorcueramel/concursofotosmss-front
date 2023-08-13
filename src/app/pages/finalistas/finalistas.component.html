@@ -4,6 +4,7 @@
       <p-table
         [value]="finalistas"
         [tableStyle]="{ 'min-width': '60rem' }"
+        *ngIf="finalistas.length > 0; else nodata"
       >
         <ng-template pTemplate="caption">
           <div class="flex align-items-center justify-content-between">
@@ -37,5 +38,10 @@
         </ng-template>
       </p-table>
     </div>
+    <ng-template #nodata>
+      <div class="card">
+        <h1>SIN DATOS</h1>
+      </div>
+    </ng-template>
   </div>
 </div>

@@ -13,33 +13,35 @@ const routes: Routes = [
   {
     path: 'menu',
     loadChildren: () =>
-      import('./pages/pages.module').then((m) => m.PagesModule)
+      import('./pages/pages.module').then((m) => m.PagesModule),
   },
   {
-    path:'not-found',
-    component: NotFoundComponent
+    path: 'publico',
+    component: PublicoComponent,
   },
   {
-    path:'publico',
-    component: PublicoComponent
+    path: 'publico/fotos/:id',
+    component: FotosPublicasComponent,
   },
   {
-    path:'publico/fotos/:id',
-    component: FotosPublicasComponent
+    path: 'publico/foto/:id/votar',
+    component: VotarFotoComponent,
   },
   {
-    path:'publico/foto/:id/votar',
-    component: VotarFotoComponent
+    path: 'not-found',
+    component: NotFoundComponent,
   },
   {
     path: '**',
     pathMatch: 'full',
-    redirectTo: 'not-found'
+    redirectTo: 'not-found',
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{
+    useHash: true,
+  })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
