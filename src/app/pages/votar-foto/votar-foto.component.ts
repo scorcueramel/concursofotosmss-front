@@ -7,7 +7,9 @@ import { FotoService } from 'src/app/services/foto.service';
 import { ReactionService } from 'src/app/services/reaction.service';
 import { SwalService } from 'src/app/services/swal.service';
 import { environment } from 'src/environments/environment';
-import { MessageService } from 'primeng/api';
+import { MessageService } from 'primeng/api'
+
+
 
 @Component({
   selector: 'app-votar-foto',
@@ -18,8 +20,20 @@ import { MessageService } from 'primeng/api';
 export class VotarFotoComponent implements OnInit {
   id: number = this.activateRouter.snapshot.params['id'];
   rutaURL = environment.apiUrlArchivos;
-  ipCliente: string;
-  foto: Foto = {};
+  reaccionPorIp = new Array();
+  ipObtenido: string;
+  foto: Foto = {
+    id: 0,
+    nombre_participante: '',
+    titulo: '',
+    lugar: '',
+    resenia: '',
+    motivacion: '',
+    archivo: '',
+    activo: false,
+    publicado: false,
+    album_id: 0,
+  };
   reacciones: Reaccion[] = [];
   reaccion: boolean = false;
   contResp: number = 0;
@@ -30,36 +44,18 @@ export class VotarFotoComponent implements OnInit {
     private swalService: SwalService,
     private fotoService: FotoService,
     private reactionService: ReactionService,
-    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
     this.obtenerFoto(this.id);
   }
 
-  reaccionXIp(ip: string): void {
-    this.reactionService.reacctionsIp(ip).subscribe({
-      next: (res: any) => {
-        this.reacciones = res;
-        this.reacciones.forEach((e) => {
-          if (e.foto_id == this.id) {
-            this.reaccion = e.tipo_reaccion;
-          }
-        });
-        this.swalService.close();
-      },
-      error: (err: any) => {
-        console.log(err.error);
-      },
-    });
-  }
-
   obtenerFoto(id: number): void {
     this.swalService.wait();
-    this.fotoService.getIpClient().subscribe({
-      next: (resp: any) => {
-        this.ipCliente = resp.ip;
-        this.reaccionXIp(this.ipCliente);
+
+    this.reactionService.getIpReacction().subscribe({
+      next: (res: any) => {
+        this.ipObtenido = res[0].terminal_ip;
       },
       error: (err: any) => {
         console.log(err.error);
@@ -69,6 +65,15 @@ export class VotarFotoComponent implements OnInit {
     this.fotoService.getOnePhotoPublic(id).subscribe({
       next: (resp: any) => {
         this.foto = resp.content[0];
+        this.reaccionPorIp = resp.ip;
+
+        this.reaccionPorIp.forEach((e) => {
+          if (e.terminal_ip == this.ipObtenido) {
+            this.reaccion = e.tipo_reaccion;
+          }
+        });
+
+        this.swalService.close();
       },
       error: (err: any) => {
         console.log(err.error);
@@ -78,7 +83,7 @@ export class VotarFotoComponent implements OnInit {
 
     this.reactionService.getReactionsCount(id).subscribe({
       next: (resp: any) => {
-        this.contResp = resp[0].conteo
+        this.contResp = resp[0].conteo;
       },
       error: (err: any) => {
         console.log(err.error);
@@ -86,18 +91,10 @@ export class VotarFotoComponent implements OnInit {
     });
   }
 
-  reaccionar(idFoto: number, idReaccion: number, ipClient: string): void {
-    this.reactionService.reactions(idFoto, idReaccion, ipClient).subscribe({
+  reaccionar(idFoto: number, idReaccion: number): void {
+    this.reactionService.reactions(idFoto, idReaccion).subscribe({
       next: (resp: any) => {
         this.obtenerFoto(idFoto);
-        // Pendiente mostrar mensaje de respuesta a la reaccion
-        // this.messageService.add({
-        //   severity: resp.severity,
-        //   summary: 'Excelente!',
-        //   detail: resp.detail,
-        // });
-
-        console.log(resp);
       },
       error: (err: any) => {
         console.log(err.errror);

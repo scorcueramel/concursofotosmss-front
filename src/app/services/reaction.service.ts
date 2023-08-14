@@ -20,15 +20,15 @@ export class ReactionService {
     this.URI = 'general/'
   }
 
-  reactions(idFoto:number, idReact:number,ipCliente:string):Observable<any>{
-    return this.httpClient.get<any>(`${this.URL}${this.URI}reaccion/${idFoto}/${idReact}/${ipCliente}`);
-  }
-
-  reacctionsIp(ip:string):Observable<any[]>{
-    return this.httpClient.get<any[]>(`${this.URL}${this.URI}reacciones/${ip}`);
+  reactions(idFoto:number, idReact:number):Observable<any>{
+    return this.httpClient.get<any>(`${this.URL}${this.URI}reaccion/${idFoto}/${idReact}`);
   }
 
   getReactionsCount(id:number):Observable<any>{
     return this.httpClient.get<any>(`${this.URL}${this.URI}getReaccions/${id}`);
+  }
+
+  getIpReacction():Observable<any>{
+    return this.httpClient.get<any>(`${this.URL}${this.URI}getIpClient`);
   }
 }

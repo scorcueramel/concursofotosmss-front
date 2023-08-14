@@ -6,7 +6,6 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { VotarFotoComponent } from './votar-foto.component';
 import { ImageModule } from 'primeng/image';
-import { ToastModule } from 'primeng/toast';
 
 
 
@@ -22,7 +21,6 @@ import { ToastModule } from 'primeng/toast';
     TooltipModule,
     MenubarModule,
     ImageModule,
-    ToastModule
   ],
   exports:[
     VotarFotoComponent

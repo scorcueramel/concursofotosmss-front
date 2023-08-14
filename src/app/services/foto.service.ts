@@ -56,10 +56,6 @@ export class FotoService {
     return this.httpClient.get<Foto[]>(`${this.URL}general/fotosAlbumPublic/${id}`);
   }
 
-  getIpClient():Observable<any>{
-    return this.httpClient.get("http://api.ipify.org/?format=json");
-  }
-
   getOnePhotoPublic(id:number):Observable<Album>{
     return this.httpClient.get<Album>(`${this.URL}general/getOnePhotoPublic/${id}`);
   }
