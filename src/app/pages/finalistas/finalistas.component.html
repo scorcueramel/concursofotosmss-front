@@ -27,9 +27,7 @@
             <td>{{ fl.nombre_participante }}</td>
             <td>{{ fl.titulo }}</td>
             <td>
-              <button style="background-color: transparent; border: transparent; cursor: pointer;" (click)="verFoto(fl.id)" pTooltip="Foto y Detalles" tooltipPosition="bottom">
                 <img [src]="rutaURL+fl.archivo" [alt]="fl.titulo" width="100" class="shadow-4" />
-              </button>
             </td>
             <td>{{ fl.fecha_carga }}</td>
             <td>{{ fl.album }}</td>

@@ -35,7 +35,7 @@ export class VotarFotoComponent implements OnInit {
     album_id: 0,
   };
   reacciones: Reaccion[] = [];
-  reaccion: boolean = false;
+  reaccion: boolean;
   contResp: number = 0;
 
   constructor(
@@ -48,6 +48,7 @@ export class VotarFotoComponent implements OnInit {
 
   ngOnInit(): void {
     this.obtenerFoto(this.id);
+    this.reaccion;
   }
 
   obtenerFoto(id: number): void {
@@ -56,6 +57,7 @@ export class VotarFotoComponent implements OnInit {
     this.reactionService.getIpReacction().subscribe({
       next: (res: any) => {
         this.ipObtenido = res[0].terminal_ip;
+
       },
       error: (err: any) => {
         console.log(err.error);

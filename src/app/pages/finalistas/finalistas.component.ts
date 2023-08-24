@@ -38,10 +38,6 @@ export class FinalistasComponent {
     });
   }
 
-  verFoto(id:number):void{
-    this.router.navigate([`/publico/foto/${id}/votar`]);
-  }
-
   irAlbunes(){
     this.router.navigate(['/menu/inicio/albunes/publicados']);
   }
