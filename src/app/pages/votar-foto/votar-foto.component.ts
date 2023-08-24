@@ -21,7 +21,7 @@ export class VotarFotoComponent implements OnInit {
   id: number = this.activateRouter.snapshot.params['id'];
   rutaURL = environment.apiUrlArchivos;
   reaccionPorIp = new Array();
-  ipObtenido: string;
+  ipObtenido:string = localStorage.getItem('ipCliente');
   foto: Foto = {
     id: 0,
     nombre_participante: '',
@@ -35,7 +35,7 @@ export class VotarFotoComponent implements OnInit {
     album_id: 0,
   };
   reacciones: Reaccion[] = [];
-  reaccion: boolean;
+  reaccion: boolean = false;
   contResp: number = 0;
 
   constructor(
@@ -50,28 +50,37 @@ export class VotarFotoComponent implements OnInit {
     this.obtenerFoto(this.id);
   }
 
+  // obtenerReaccionIp():void{
+  //   this.reactionService.getIpReacction().subscribe({
+  //     next: (res: any) => {
+  //       this.ipObtenido = res[0].terminal_ip;
+
+  //       console.log(res);
+
+  //     },
+  //     error: (err: any) => {
+  //       console.log(err.error);
+  //     },
+  //   });
+  // }
+
   obtenerFoto(id: number): void {
     this.swalService.wait();
-
-    this.reactionService.getIpReacction().subscribe({
-      next: (res: any) => {
-        this.ipObtenido = res[0].terminal_ip;
-      },
-      error: (err: any) => {
-        console.log(err.error);
-      },
-    });
-
+    // this.obtenerReaccionIp();
     this.fotoService.getOnePhotoPublic(id).subscribe({
       next: (resp: any) => {
         this.foto = resp.content[0];
         this.reaccionPorIp = resp.ip;
+
+        console.log(this.ipObtenido);
+
 
         this.reaccionPorIp.forEach((e) => {
           if (e.terminal_ip == this.ipObtenido) {
             this.reaccion = e.tipo_reaccion;
           }
         });
+        this.swalService.close();
       },
       error: (err: any) => {
         console.log(err.error);
@@ -82,7 +91,6 @@ export class VotarFotoComponent implements OnInit {
     this.reactionService.getReactionsCount(id).subscribe({
       next: (resp: any) => {
         this.contResp = resp[0].conteo;
-        this.swalService.close();
       },
       error: (err: any) => {
         console.log(err.error);

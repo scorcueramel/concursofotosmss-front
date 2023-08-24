@@ -35,7 +35,9 @@ export class PublicoComponent implements OnInit{
     this.serviceAlbum.getAlbumPublic().subscribe({
       next: (res:any)=>{
         this.albums = res.albums
-        console.log(this.albums);
+        localStorage.setItem('ipCliente', res.ipClient);
+        console.log(res);
+
         this.swalService.close();
       },
       error: (err:any)=>{
