@@ -67,6 +67,8 @@ export class VotarFotoComponent implements OnInit {
   obtenerFoto(id: number): void {
     this.swalService.wait();
     // this.obtenerReaccionIp();
+
+
     this.fotoService.getOnePhotoPublic(id).subscribe({
       next: (resp: any) => {
         this.foto = resp.content[0];

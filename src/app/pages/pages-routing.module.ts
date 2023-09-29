@@ -22,7 +22,7 @@ import { FinalistasComponent } from './finalistas/finalistas.component';
 const routes: Routes = [
   {
     path: '',
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     children: [
       {
         path: 'inicio',
