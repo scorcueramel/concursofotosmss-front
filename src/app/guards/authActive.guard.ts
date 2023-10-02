@@ -18,7 +18,7 @@ export class AuthActive implements CanActivate{
       this.router.navigate(['/menu/inicio/portada']);
       return true;
     }else{
-      return true;
+      return false;
     }
   }
 }

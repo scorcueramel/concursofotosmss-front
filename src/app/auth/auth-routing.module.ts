@@ -10,8 +10,8 @@ const routes: Routes = [
   },
   {
     path: 'login',
+    // canActivate: [AuthActive],
     component: LoginComponent,
-    // canActivate: [AuthActive]
   },
   {
     path: '**',

@@ -21,7 +21,8 @@ export class VotarFotoComponent implements OnInit {
   id: number = this.activateRouter.snapshot.params['id'];
   rutaURL = environment.apiUrlArchivos;
   reaccionPorIp = new Array();
-  ipObtenido:string = localStorage.getItem('ipCliente');
+  // ipObtenido:string = localStorage.getItem('ipCliente');
+  ipObtenido:string = localStorage.getItem('tokenVoto');
   foto: Foto = {
     id: 0,
     nombre_participante: '',
@@ -37,6 +38,7 @@ export class VotarFotoComponent implements OnInit {
   reacciones: Reaccion[] = [];
   reaccion: boolean = false;
   contResp: number = 0;
+  tokenVoto = localStorage.getItem('tokenVoto');
 
   constructor(
     private location: Location,
@@ -67,8 +69,6 @@ export class VotarFotoComponent implements OnInit {
   obtenerFoto(id: number): void {
     this.swalService.wait();
     // this.obtenerReaccionIp();
-
-
     this.fotoService.getOnePhotoPublic(id).subscribe({
       next: (resp: any) => {
         this.foto = resp.content[0];
@@ -100,8 +100,8 @@ export class VotarFotoComponent implements OnInit {
     });
   }
 
-  reaccionar(idFoto: number, idReaccion: number): void {
-    this.reactionService.reactions(idFoto, idReaccion).subscribe({
+  reaccionar(idFoto: number, idReaccion: number, tokenVoto: string): void {
+    this.reactionService.reactions(idFoto, idReaccion, tokenVoto).subscribe({
       next: (resp: any) => {
         this.obtenerFoto(idFoto);
       },

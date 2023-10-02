@@ -34,12 +34,13 @@ export class AuthService {
     return this.httpClient.post<Object>(`${this.URL}${this.URI}logout`, null, cabecera);
   }
 
-  isAuth(): boolean {
+  isAuth():boolean{
     const token = localStorage.getItem('token');
-    if (this._jwtHelper.isTokenExpired(token) || localStorage.getItem('token') ) {
+    if(this._jwtHelper.isTokenExpired(token) || localStorage.getItem('token') == ''){
       return false;
+    }else{
+      return true;
     }
-    return true;
   }
 
   isAdmin():boolean{

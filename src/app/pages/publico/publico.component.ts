@@ -34,6 +34,10 @@ export class PublicoComponent implements OnInit{
     this.swalService.wait();
     this.serviceAlbum.getAlbumPublic().subscribe({
       next: (res:any)=>{
+
+        if(localStorage.getItem('tokenVoto')=='' || localStorage.getItem('tokenVoto') == null){
+          localStorage.setItem('tokenVoto', res.tokenVoto);
+        }
         this.albums = res.albums
         localStorage.setItem('ipCliente', res.ipClient);
         console.log(res);
@@ -50,4 +54,5 @@ export class PublicoComponent implements OnInit{
   verFotos(id:number):void{
     this.router.navigate([`publico/fotos/${id}`])
   }
+
 }

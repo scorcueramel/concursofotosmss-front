@@ -20,8 +20,8 @@ export class ReactionService {
     this.URI = 'general/'
   }
 
-  reactions(idFoto:number, idReact:number):Observable<any>{
-    return this.httpClient.get<any>(`${this.URL}${this.URI}reaccion/${idFoto}/${idReact}`);
+  reactions(idFoto:number, idReact:number, tokenVoto:string):Observable<any>{
+    return this.httpClient.get<any>(`${this.URL}${this.URI}reaccion/${idFoto}/${idReact}/${tokenVoto}`);
   }
 
   getReactionsCount(id:number):Observable<any>{

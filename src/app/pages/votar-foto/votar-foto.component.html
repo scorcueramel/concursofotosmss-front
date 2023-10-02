@@ -52,14 +52,14 @@
           styleClass="p-button p-button-rounded mr-2"
           icon="pi pi-thumbs-up-fill"
           *ngIf="!reaccion"
-          (onClick)="reaccionar(foto.id,1)"
+          (onClick)="reaccionar(foto.id,1,tokenVoto)"
           ></p-button>
           <p-button
           type="button"
           styleClass="p-button-success p-button-rounded mr-2"
           icon="pi pi-thumbs-down-fill"
           *ngIf="reaccion"
-          (onClick)="reaccionar(foto.id,2)"
+          (onClick)="reaccionar(foto.id,2,tokenVoto)"
           ></p-button>
         </div>
         <!-- <div class="contador">

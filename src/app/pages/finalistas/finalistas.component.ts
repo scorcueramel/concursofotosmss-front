@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Finalista } from 'src/app/interfaces/finalista';
+import { AuthService } from 'src/app/services/auth.service';
 import { FinalistasService } from 'src/app/services/finalistas.service';
 import { SwalService } from 'src/app/services/swal.service';
 import { environment } from 'src/environments/environment';
@@ -18,11 +19,13 @@ export class FinalistasComponent {
   constructor(
     private finalistService: FinalistasService,
     private swalService: SwalService,
-    private router: Router
+    private router: Router,
+    private _auth:AuthService
   ){}
 
   ngOnInit(): void {
     this.obtenerFinalistas();
+    this._auth.isAuth();
   }
 
   obtenerFinalistas():void{
